@@ -15,8 +15,8 @@ import java.util.List;
 public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskViewHolder> {
 
     private Context context;
-    private List<TripTask> taskList;      // الليست المعروضة حاليا
-    private OnItemClickListener listener; // عشان نقدر نسمع للضغطات
+    private List<TripTask> taskList;      
+    private OnItemClickListener listener; 
 
     public TripTaskAdapter(Context context, List<TripTask> taskList, OnItemClickListener listener) {
         this.context = context;
@@ -24,7 +24,6 @@ public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskVi
         this.listener = listener;
     }
 
-    // لو حبينا نحدّث الليست (مثلا بعد بحث)
     public void updateList(List<TripTask> newList) {
         taskList = newList != null ? newList : new ArrayList<TripTask>();
         notifyDataSetChanged();
@@ -46,7 +45,6 @@ public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskVi
         holder.txtDate.setText("Date: " + task.getDate());
         holder.txtType.setText("Type: " + task.getType());
 
-        // نخزن الريفرنس على التاسك في الهولدر عشان نستخدمه بالضغط
         holder.bind(task, listener);
     }
 
@@ -55,7 +53,6 @@ public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskVi
         return taskList.size();
     }
 
-    // ===================== ViewHolder =====================
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
 
@@ -70,14 +67,12 @@ public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskVi
         }
 
         public void bind(TripTask task, OnItemClickListener listener) {
-            // ضغط عادي
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     listener.onItemClick(task);
                 }
             });
 
-            // ضغط مطوّل (مثلا للحذف لاحقا)
             itemView.setOnLongClickListener(v -> {
                 if (listener != null) {
                     listener.onItemLongClick(task);
@@ -87,7 +82,6 @@ public class TripTaskAdapter extends RecyclerView.Adapter<TripTaskAdapter.TaskVi
         }
     }
 
-    // ===================== Interface للضغطات =====================
 
     public interface OnItemClickListener {
         void onItemClick(TripTask task);
