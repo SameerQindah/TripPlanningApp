@@ -2,17 +2,16 @@ package com.example.tripplanningapp;
 
 public class TripTask {
 
-    private String id;        // عشان نميز كل Task لوحدها
-    private String title;     // اسم النشاط
-    private String city;      // المدينة
-    private String date;      // التاريخ كنص (مثلاً 2025-12-01)
-    private String type;      // النوع: Sightseeing / Food / Shopping / Transport
-    private boolean isPaid;   // هل مدفوع؟
-    private boolean needReminder; // هل يحتاج تذكير؟
-    private String note;      // ملاحظات إضافية
+    private String id;        
+    private String title;     
+    private String city;      
+    private String date;      
+    private String type;      
+    private boolean isPaid;   
+    private boolean needReminder; 
+    private String note;
 
     public TripTask() {
-        // Empty constructor ضروري لمكتبة Gson
     }
 
     public TripTask(String id, String title, String city, String date,
