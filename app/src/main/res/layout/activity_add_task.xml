@@ -26,7 +26,6 @@
             android:padding="10dp"
             android:layout_marginTop="10dp"/>
 
-        <!-- تاريخ -->
         <TextView
             android:id="@+id/txtDate"
             android:layout_width="match_parent"
@@ -37,7 +36,6 @@
             android:layout_marginTop="10dp"
             android:background="#eeeeee" />
 
-        <!-- أنواع -->
         <RadioGroup
             android:id="@+id/radioType"
             android:layout_width="match_parent"
@@ -71,7 +69,6 @@
 
         </RadioGroup>
 
-        <!-- CheckBox -->
         <CheckBox
             android:id="@+id/chkPaid"
             android:layout_width="wrap_content"
@@ -79,7 +76,6 @@
             android:text="Paid?"
             android:layout_marginTop="10dp"/>
 
-        <!-- Switch -->
         <Switch
             android:id="@+id/switchReminder"
             android:layout_width="wrap_content"
