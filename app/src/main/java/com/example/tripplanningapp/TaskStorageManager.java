@@ -12,8 +12,8 @@ import java.util.List;
 
 public class TaskStorageManager {
 
-    private static final String PREF_NAME = "trip_tasks_prefs";   // اسم ملف الشيرد
-    private static final String KEY_TASK_LIST = "task_list";      // المفتاح اللي نخزن تحته الليست
+    private static final String PREF_NAME = "trip_tasks_prefs";   
+    private static final String KEY_TASK_LIST = "task_list";      
 
     private SharedPreferences sharedPreferences;
     private Gson gson;
@@ -23,12 +23,11 @@ public class TaskStorageManager {
         gson = new Gson();
     }
 
-    // تحميل كل التاسكات
     public List<TripTask> loadTasks() {
         String json = sharedPreferences.getString(KEY_TASK_LIST, "");
 
         if (json == null || json.isEmpty()) {
-            return new ArrayList<>(); // لو فاضي رجع ليست فاضية
+            return new ArrayList<>(); 
         }
 
         Type listType = new TypeToken<List<TripTask>>() {}.getType();
@@ -41,7 +40,6 @@ public class TaskStorageManager {
         return tasks;
     }
 
-    // حفظ كل الليست في الشيرد بريفرنس
     public void saveTasks(List<TripTask> tasks) {
         String json = gson.toJson(tasks);
         sharedPreferences.edit()
@@ -49,21 +47,19 @@ public class TaskStorageManager {
                 .apply();
     }
 
-    // إضافة تاسك جديدة
     public void addTask(TripTask task) {
         List<TripTask> current = loadTasks();
         current.add(task);
         saveTasks(current);
     }
 
-    // تعديل تاسك موجودة حسب الـ id
     public void updateTask(TripTask updatedTask) {
         List<TripTask> current = loadTasks();
 
         for (int i = 0; i < current.size(); i++) {
             TripTask t = current.get(i);
             if (t.getId().equals(updatedTask.getId())) {
-                current.set(i, updatedTask); // استبدال القديمة بالجديدة
+                current.set(i, updatedTask); 
                 break;
             }
         }
@@ -71,14 +67,13 @@ public class TaskStorageManager {
         saveTasks(current);
     }
 
-    // حذف تاسك حسب الـ id
     public void deleteTask(String taskId) {
         List<TripTask> current = loadTasks();
         List<TripTask> newList = new ArrayList<>();
 
         for (TripTask t : current) {
             if (!t.getId().equals(taskId)) {
-                newList.add(t); // بس اللي مش نفس الـ id نخليه
+                newList.add(t); 
             }
         }
 
