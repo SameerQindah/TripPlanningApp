@@ -8,7 +8,6 @@
     android:gravity="center"
     android:padding="24dp">
 
-<!-- عنوان التطبيق -->
     <TextView
         android:id="@+id/txtAppTitle"
         android:layout_width="wrap_content"
@@ -19,7 +18,6 @@
         android:textColor="@color/purpleDark"
         android:layout_marginBottom="4dp"/>
 
-    <!-- سطر تعريفي -->
     <TextView
         android:id="@+id/txtAppSubtitle"
         android:layout_width="wrap_content"
@@ -29,7 +27,6 @@
         android:textColor="@color/textSecondary"
         android:layout_marginBottom="24dp"/>
 
-    <!-- كارد الفورم -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
