@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundSoft"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+<!-- عنوان التطبيق -->
+    <TextView
+        android:id="@+id/txtAppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trip Planner"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/purpleDark"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- سطر تعريفي -->
+    <TextView
+        android:id="@+id/txtAppSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plan your perfect city stops"
+        android:textSize="14sp"
+        android:textColor="@color/textSecondary"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- كارد الفورم -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:background="@color/cardBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/textMain"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/textMain"
+                android:textColorHint="@color/textSecondary"
+                android:layout_marginBottom="12dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textSecondary" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/textMain"
+                android:textColorHint="@color/textSecondary"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/textSecondary" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/purplePrimary"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="4dp"
+                android:stateListAnimator="@null"
+                android:background="@drawable/rounded_button_background"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
