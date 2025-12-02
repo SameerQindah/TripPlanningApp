@@ -23,27 +23,22 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
 
     private TaskStorageManager storageManager;
     private TripTaskAdapter adapter;
-    private List<TripTask> allTasks;   // كل التاسكات الأصلية (قبل الفلترة)
+    private List<TripTask> allTasks;   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // ربط الواجهات
         recyclerTasks = findViewById(R.id.recyclerTasks);
         searchView = findViewById(R.id.searchView);
         btnAddTask = findViewById(R.id.btnAddTask);
 
-        // مدير التخزين
         storageManager = new TaskStorageManager(this);
 
-        // تحميل البيانات من الشيرد بريفرنس
         allTasks = storageManager.loadTasks();
 
-        // (اختياري) لو أول مرة فاضية، ممكن نحط مثال تجريبي
         if (allTasks.isEmpty()) {
-            // مثال واحد عشان تشوف شكل الليست
             TripTask sample = new TripTask(
                     "1",
                     "Visit Eiffel Tower",
@@ -58,15 +53,12 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
             storageManager.saveTasks(allTasks);
         }
 
-        // إعداد الريسايكلرفيو
         recyclerTasks.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TripTaskAdapter(this, allTasks, this);
         recyclerTasks.setAdapter(adapter);
 
-        // البحث
         setupSearch();
 
-        // زر الإضافة (لاحقًا رح نفتح AddTaskActivity)
         btnAddTask.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, AddTaskActivity.class));
         });
@@ -76,12 +68,10 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
     @Override
     protected void onResume() {
         super.onResume();
-        // لما نرجع من شاشة تانية (إضافة/تعديل) نعيد تحميل البيانات
         allTasks = storageManager.loadTasks();
         adapter.updateList(allTasks);
     }
 
-    // إعداد البحث
     private void setupSearch() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -98,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
         });
     }
 
-    // فلترة الليست حسب الاسم أو المدينة
     private void filterTasks(String query) {
         if (query == null || query.trim().isEmpty()) {
             adapter.updateList(allTasks);
@@ -118,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
         adapter.updateList(filtered);
     }
 
-    // لما نضغط على عنصر (لاحقًا رح نفتح EditTaskActivity)
     @Override
     public void onItemClick(TripTask task) {
         Intent i = new Intent(MainActivity.this, EditTaskActivity.class);
@@ -127,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements TripTaskAdapter.O
     }
 
 
-    // ضغط مطوّل (ممكن نستخدمها للحذف بعدين)
     @Override
     public void onItemLongClick(TripTask task) {
         Toast.makeText(this, "Long click on: " + task.getTitle(), Toast.LENGTH_SHORT).show();
