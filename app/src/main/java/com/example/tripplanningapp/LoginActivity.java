@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(i);
-            finish(); // عشان يمنع الرجوع للّوجن
+            finish(); 
 
         } else {
             Toast.makeText(this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
