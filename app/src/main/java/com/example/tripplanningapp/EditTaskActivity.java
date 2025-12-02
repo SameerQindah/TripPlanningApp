@@ -40,7 +40,6 @@ public class EditTaskActivity extends AppCompatActivity {
         storageManager = new TaskStorageManager(this);
         allTasks = storageManager.loadTasks();
 
-        // ابحث عن التاسك حسب ID
         for (TripTask t : allTasks) {
             if (t.getId().equals(taskId)) {
                 currentTask = t;
@@ -54,7 +53,6 @@ public class EditTaskActivity extends AppCompatActivity {
             return;
         }
 
-        // ربط الواجهات
         edtTitle = findViewById(R.id.edtTitle);
         edtCity = findViewById(R.id.edtCity);
         edtNote = findViewById(R.id.edtNote);
@@ -65,7 +63,6 @@ public class EditTaskActivity extends AppCompatActivity {
         btnSaveChanges = findViewById(R.id.btnSaveChanges);
         btnDelete = findViewById(R.id.btnDelete);
 
-        // تعبئة البيانات
         edtTitle.setText(currentTask.getTitle());
         edtCity.setText(currentTask.getCity());
         edtNote.setText(currentTask.getNote());
@@ -80,13 +77,10 @@ public class EditTaskActivity extends AppCompatActivity {
         chkPaid.setChecked(currentTask.isPaid());
         switchReminder.setChecked(currentTask.isNeedReminder());
 
-        // اختيار التاريخ
         txtDate.setOnClickListener(v -> showDatePicker());
 
-        // حفظ التعديلات
         btnSaveChanges.setOnClickListener(v -> updateTask());
 
-        // حذف
         btnDelete.setOnClickListener(v -> {
             storageManager.deleteTask(currentTask.getId());
             Toast.makeText(this, "Task deleted", Toast.LENGTH_SHORT).show();
